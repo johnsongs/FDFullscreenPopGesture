@@ -50,7 +50,7 @@
     if (maxAllowedInitialDistance > 0 && beginningLocation.x > maxAllowedInitialDistance) {
         return NO;
     }
-
+    
     // Ignore pan gesture when the navigation controller is currently in transition.
     if ([[self.navigationController valueForKey:@"_isTransitioning"] boolValue]) {
         return NO;
@@ -86,7 +86,7 @@ typedef void (^_FDViewControllerWillAppearInjectBlock)(UIViewController *viewCon
         Method viewWillAppear_originalMethod = class_getInstanceMethod(self, @selector(viewWillAppear:));
         Method viewWillAppear_swizzledMethod = class_getInstanceMethod(self, @selector(fd_viewWillAppear:));
         method_exchangeImplementations(viewWillAppear_originalMethod, viewWillAppear_swizzledMethod);
-    
+        
         Method viewWillDisappear_originalMethod = class_getInstanceMethod(self, @selector(viewWillDisappear:));
         Method viewWillDisappear_swizzledMethod = class_getInstanceMethod(self, @selector(fd_viewWillDisappear:));
         method_exchangeImplementations(viewWillDisappear_originalMethod, viewWillDisappear_swizzledMethod);
